@@ -2,6 +2,9 @@
 \usepackage{graphicx} % Required for inserting images
 \usepackage{amsmath,amssymb}
 
+\usepackage[backend=biber]{biblatex}
+\addbibresource{references.bib}
+
 \title{Power-Optimal Inverter Chain Design Under Elmore Delay Constraints}
 \author{Suprith Krishnakumar, John Fang, John Hsu, Yuheng Li}
 \date{March 2026}
@@ -30,6 +33,57 @@ constraints. Through this formulation, we aim to bridge classical circuit design
 with modern optimization techniques and provide a scalable method for a energy-efficient
 buffer chain design.
 \subsection{Previous Works}
+	\subsubsection {Low-Power Circuit Design and Delay Modeling}
+		The demand for high-throughput, low-power digital systems has become increasingly critical, largely 
+		driven by the stringent energy requirements of portable computing applications \cite{cmos}. Power 
+		dissipation in digital CMOS circuits primarily stems from switching (dynamic) power, direct-path 
+		short-circuit currents, and subthreshold leakage \cite{cmos}. To successfully optimize systems for 
+		power, designers rely on mathematical models to predict circuit delay and performance. While 
+		transistor behavior in the sub-micrometer regime has been characterized by models such as 
+		the alpha-power law \cite{alpha}, designers frequently abstract interconnect and gate delays 
+		using resistor-capacitor (RC) equivalent circuits and the Elmore delay approximation \cite{gp}.
+		The Elmore delay provides a reliable measure of signal propagation by calculating the area under
+		the voltage response curve as an RC network discharges, effectively capturing the time it takes 
+		for a signal to transition \cite{gp}.
+
+	\subsubsection{Classical Sizing Heuristics and Iterative Algorithms}
+		Historically, optimizing the size of logic gates and buffers to minimize delay or power has been 
+		approached through classical design heuristics. A prominent example is the method of "logical 
+		effort," which simplifies the delay optimization of logic paths and inverter chains into 
+		straightforward sizing rules based on RC models \cite{gp}. While logical effort is an 
+		excellent tool for quickly evaluating candidate circuit topologies and gaining early design 
+		intuition, it does not always yield globally optimal solutions under complex constraints 
+		involving wire parasitics and strict timing requirements. Other modern optimization 
+		approaches tackle simultaneous gate sizing, dual-supply voltage ($V_{dd}$), and dual-threshold 
+		voltage ($V_{th}$) assignments using sensitivity-based heuristics \cite{dual_vdd}. However, 
+		these gradient-descent or heuristic algorithms can be subject to getting trapped in local 
+		minima and may struggle to efficiently guarantee a globally optimum power layout \cite{dual_vdd}. 
+	\subsubsection{Convex Optimization and Geometric Programming in VLSI}
+		To overcome the limitations of heuristic methods, researchers have increasingly turned to convex 
+		optimization. The defining advantage of convex optimization is that any local optimum is 
+		mathematically guaranteed to be a global optimum, ensuring that solvers do not get trapped in 
+		sub-optimal design states \cite{convex}. Furthermore, a specialized subset of convex optimization 
+		known as Geometric Programming (GP) has emerged as a unifying standard form for circuit sizing 
+		problems \cite{gp}.
+	
+	The application of GP to digital circuit sizing dates back to 1985 with Fishburn and Dunlop’s TILOS algorithm, 
+	which optimized transistor sizing using Elmore delay models \cite{gp}. Today, highly efficient 
+	interior-point algorithms can solve these large-scale GP problems reliably and globally, making it possible to 
+	account for complex interactions between area, delay, and power constraints.
+
+	Our work builds upon this rich history of geometric programming by applying it specifically to the power-optimal 
+	design of inverter (buffer) chains. Instead of relying on traditional iterative heuristics or restricting sizing 
+	to gates alone, we treat both the transistor sizing factors ($W_i$) and the physical interconnect 
+	lengths ($l_i$) between stages as optimization variables.
+
+	By analyzing the non-convex multiplicative and ratio terms inherent in full RC Elmore delay expressions, 
+	we demonstrate that the delay constraint can be reformulated as a posynomial and mapped into a strictly 
+	convex geometric programming space using logarithmic variable substitution. Ultimately, our approach 
+	bridges the gap between classical circuit design intuition and modern convex optimization techniques. 
+	By comparing our method to a simplified Boyd-style baseline that removes wire resistance and 
+	capacitance coupling terms, we verify that utilizing a fully wire-aware GP model prevents designers 
+	from underestimating the true power costs required to meet strict timing targets.
+
 
 \subsection{Intended Contributions}
 \begin{enumerate}
@@ -540,6 +594,8 @@ Finally, we returned to the unrestricted formulation in which both $W_i$ and $l_
 
 
 \section{References}
+
+\printbibliography
 
 
 \end{document}
