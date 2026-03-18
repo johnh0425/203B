@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.2) (preloaded format=pdflatex 2026.3.12)  12 MAR 2026 17:16
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.2) (preloaded format=pdflatex 2026.3.12)  18 MAR 2026 00:16
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -88,24 +88,79 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 10.
  [1
 
-{C:/Users/johnh/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] (203b.aux)
+{C:/Users/johnh/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 54.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 54.
+ [2] [3]
+c:/Users/johnh/OneDrive/Documents/GitHub/203B/203b.tex:155: Undefined control sequence.
+l.155 \[ c_k e^{a_k^T z}, \quad \text
+                                     {where } z = [x_1, \dots, x_N, y_1, \do...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+[4]
+c:/Users/johnh/OneDrive/Documents/GitHub/203B/203b.tex:162: Undefined control sequence.
+l.162 For any $v \in \mathbb
+                            {R}^n$:
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+c:/Users/johnh/OneDrive/Documents/GitHub/203B/203b.tex:189: Misplaced alignment tab character &.
+l.189 \[ \min_{x,y} \quad &
+                            \log \left(
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+[5]
+c:/Users/johnh/OneDrive/Documents/GitHub/203B/203b.tex:192: Undefined control sequence.
+l.192 \[ \text
+              {s.t.} \quad &
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+c:/Users/johnh/OneDrive/Documents/GitHub/203B/203b.tex:192: Misplaced alignment tab character &.
+l.192 \[ \text{s.t.} \quad &
+                            
+I can't figure out why you would want to use a tab mark
+here. If you just want an ampersand, the remedy is
+simple: Just type `I\&' now. But if some right brace
+up above has ended a previous alignment prematurely,
+you're probably due for more error messages, and you
+might try typing `S' now just to see what is salvageable.
+
+[6] [7] (203b.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 1301 strings out of 467867
- 21550 string characters out of 5418334
- 437759 words of memory out of 5000000
- 30220 multiletter control sequences out of 15000+600000
- 631976 words of font info for 54 fonts, out of 8000000 for 9000
+ 1314 strings out of 467867
+ 21772 string characters out of 5418334
+ 443759 words of memory out of 5000000
+ 30230 multiletter control sequences out of 15000+600000
+ 632930 words of font info for 57 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,6n,65p,227b,201s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/johnh/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/johnh/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/johnh/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/johnh/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/johnh/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb>
-Output written on 203b.pdf (1 page, 64203 bytes).
+ 57i,6n,65p,227b,209s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <C:\Users\johnh\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1000.pk><C:/Users/johnh/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/johnh/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/johnh/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/johnh/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/johnh/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/johnh/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/johnh/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/johnh/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/johnh/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/johnh/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/johnh/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/johnh/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/johnh/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
+Output written on 203b.pdf (7 pages, 189693 bytes).
 PDF statistics:
- 31 PDF objects out of 1000 (max. 8388607)
+ 96 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

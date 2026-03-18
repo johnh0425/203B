@@ -11,16 +11,244 @@
 
 \section{Introduction}
 \subsection{Motivation}
-	\paragraph{paragraph}
+	Modern VLSI digital circuits demand increasingly stringent performance 
+	and energy efficiency requirements, particularly as transistor scaling continues 
+	to push designs toward higher density and faster clock speeds. A fundamental 
+	component in high-speed digital design is the use of inverter chains (buffer chains) 
+	to drive large capacitive loads, where improper sizing or staging can lead to excessive 
+	delay or unnecessary power consumption. While classical design heuristics such as fixed 
+	stage effort or logical effort methods provide useful guidelines, they do not always yield 
+	globally optimal solutions under complex constraints involving wire parasitics, transistor 
+	sizing limits, and timing requirements. The goal of this work is to develop a principled 
+	optimization framework for inverter chain design that minimizes dynamic power consumption 
+	subject to an Elmore delay constraint. We approach this problem through the lens of convex 
+	optimization by reformulating the inherently non-convex delay expressions into a geometric 
+	programming (GP) framework via logarithmic transformation. This enables efficient computation 
+	of globally optimal inverter sizes and interconnect lengths while accounting for physical 
+	constraints. Through this formulation, we aim to bridge classical circuit design intuition 
+	with modern optimization techniques and provide a scalable method for a energy-efficient 
+	buffer chain design.
 \subsection{Previous Works}
 
 \subsection{Intended Contributions}
-
+\begin{enumerate}
+	\item Optimization-Based Formulation: We formulate the inverter chain design problem as a 
+	power minimization problem with Elmore delay, sizing, and interconnect constraints.
+	\item Geometric Programming Reformulation: We show that the non-convex delay constraint can 
+	be expressed as a posynomial and transformed into a convex constraint via logarithmic variable 
+	substitution.
+	\item Convexity Verification: We provide a formal justification that the transformed delay 
+	constraint is convex by leveraging the log-sum-exp structure and verifying all terms satisfy 
+	geometric programming requirements.
+	\item Solver Implementation: We implement the resulting formulation in a convex optimization 
+	framework (e.g., CVXPY) to compute optimal inverter sizing and interconnect parameters.
+	\item Design Insight: We analyze the trade-offs between delay, sizing, and power, and compare 
+	the optimized solutions to classical inverter chain design heuristics.
+\end{enumerate}
 \subsection{Organization of the Paper}
 
 
 \section{Statement of the Problem}
 \subsection{Primal Formulation}
+\subsubsection{Physical Interpretation of the Inverter Chain}
+We consider a chain of $N$ CMOS inverters used to drive a fixed load capacitance $C_L$. 
+Such inverter chains, commonly referred to as buffer chains, are fundamental building 
+blocks in high-speed digital circuits, where they are used to drive large capacitive 
+loads while meeting strict timing constraints.
+
+Each stage in the inverter chain is characterized by two primary design variables:
+\begin{itemize}
+    \item $W_i > 0$: the effective transistor width (or sizing factor) of inverter $i$
+    \item $l_i > 0$: the interconnect length between inverter $i$ and inverter $i+1$
+\end{itemize}
+The objective is to determine the optimal values of $\{W_i\}_{i=1}^N$ and $\{l_i\}_{i=1}^N$ 
+that minimize dynamic power consumption while satisfying a delay constraint.
+Each inverter contributes capacitance from two sources:
+\paragraph{Gate (Input) Capacitance}
+The input capacitance of inverter $i$ is proportional to its size:
+\[ C_{in,i} = W_i C_{g0} \]
+where $C_{g0}$ represents the gate capacitance of a unit-sized inverter.
+
+\paragraph{Parasitic Capacitance}
+Each inverter also has intrinsic parasitic capacitance due to diffusion regions:
+\[ C_{p,i} = W_i C_{p0} \]
+where $C_{p0}$ is the parasitic capacitance of a unit inverter.
+
+These capacitances contribute to both dynamic power consumption and delay.
+The wires connecting inverter stages introduce additional parasitics:
+\paragraph{Interconnect Modeling}
+\begin{itemize}
+    \item Resistance: \[ R_{wire,i} = r\,l_i \]
+    \item Capacitance: \[ C_{wire,i} = c\,l_i \]
+\end{itemize}
+where $r$ and $c$ denote per-unit-length resistance and capacitance, respectively. 
+These parameters capture the physical effects of interconnect scaling and play a 
+critical role in delay modeling.
+
+\paragraph{Inverter Resistance}
+The effective output resistance of inverter $i$ is inversely proportional 
+to its size: \[ R_i = \frac{R_0}{W_i} \] where $R_0$ is the resistance of a unit 
+inverter. Increasing the transistor width reduces resistance, improving delay at the 
+expense of increased capacitance.
+
+\paragraph{Dynamic Power Objective}
+The dynamic power consumption of a digital circuit is given by:
+\[ P_{dyn} = \alpha f V_{DD}^2 C_{tot} \]
+where $\alpha$ is the switching activity factor, $f$ is the clock frequency, and $V_{DD}$ is the supply voltage. 
+These quantities are treated as constants in our formulation.
+
+Thus, minimizing dynamic power reduces to minimizing the total switched capacitance $C_{tot}$.
+
+The total capacitance in the inverter chain consists of:
+\begin{itemize}
+    \item Parasitic capacitance of each inverter
+    \item Gate capacitance of downstream inverters
+    \item Interconnect capacitance
+    \item Final load capacitance $C_L$
+\end{itemize}
+
+This yields:
+\[ C_{tot} = \sum_{i=1}^{N} W_i C_{p0} + \sum_{i=1}^{N-1} W_{i+1} C_{g0} + \sum_{i=1}^{N} c\,l_i + C_L \]
+Since $C_L$ is constant, it does not affect the optimization and may be omitted from the objective.
+
+\paragraph{Elmore Delay Constraint}
+
+To ensure correct circuit operation, the total propagation delay must not exceed a specified clock period $T_{clk}$. 
+We model delay using the Elmore delay approximation, which expresses delay as a weighted sum of downstream capacitances.
+The delay contribution of each stage includes interactions between inverter resistance and downstream capacitances, 
+as well as interconnect effects.
+
+For stages $i = 1, \dots, N-1$, the delay contribution is:
+\[ d_i = \; R_0 C_{g0}\frac{W_{i+1}}{W_i} + R_0 C_{p0} + R_0 c\frac{l_i}{W_i} \\
++ r C_{g0} l_i W_{i+1} + r C_{p0} l_i W_i + r c l_i^2 \]
+
+The final stage differs since it drives the external load $C_L$:
+\[ d_N = \; R_0 C_L\frac{1}{W_N} + R_0 C_{p0} + R_0 c\frac{l_N}{W_N} \\
++ r C_L l_N + r C_{p0} l_N W_N + r c l_N^2 \]
+The total delay constraint is therefore: \[ \sum_{i=1}^{N-1} d_i + d_N \le T_{clk} \]
+
+\paragraph{Design Constraints}
+To ensure physically realizable designs, we impose:
+\[ W_{min} \le W_i \le W_{max}, \quad W_i > 0, \quad l_i > 0 \]
+
+\subsubsection{Primal Statement}
+\paragraph{Geometric Programming Reformulation}
+The original formulation is non-convex due to multiplicative and ratio terms such as:
+\[ \frac{W_{i+1}}{W_i}, \quad W_i l_i, \quad l_i^2 \]
+To enable efficient optimization, we reformulate the problem using geometric programming techniques.
+
+\paragraph{Logarithmic Variable Transformation}
+We introduce the change of variables:
+\[ x_i = \log W_i, \qquad y_i = \log l_i \]
+which implies:
+\[ W_i = e^{x_i}, \qquad l_i = e^{y_i} \]
+This transformation is bijective over the positive orthant, ensuring no loss of generality.
+
+\paragraph{Transformation of Nonlinear Terms}
+Under this transformation, multiplicative and ratio terms become exponentials of affine expressions:
+\[
+\frac{W_{i+1}}{W_i} = e^{x_{i+1}-x_i}, \quad
+W_i l_i = e^{x_i+y_i}, \quad
+l_i^2 = e^{2y_i}
+\]
+Thus, each term in the delay expressions can be written in the form:
+\[ c_k e^{a_k^T z}, \quad \text{where } z = [x_1, \dots, x_N, y_1, \dots, y_N]^T \]
+
+\paragraph{Convexity of the Log-Sum-Exp Function}
+Define:
+\[ f(x) = \log \left( \sum_{k=1}^{n} e^{x_k} \right) \]
+Let $z_k = e^{x_k}$ and $z = [z_1, \dots, z_n]^T$. Then:
+\[ \nabla^2 f(x) = \frac{1}{\mathbf{1}^T z} \mathrm{diag}(z) - \frac{1}{(\mathbf{1}^T z)^2} zz^T \]
+For any $v \in \mathbb{R}^n$:
+\[
+v^T \nabla^2 f(x) v
+= \frac{1}{(\mathbf{1}^T z)^2}
+\left[
+(\mathbf{1}^T z)\left(\sum_{i=1}^n z_i v_i^2\right)
+- \left(\sum_{i=1}^n z_i v_i\right)^2
+\right]
+\]
+By the Cauchy–Schwarz inequality:
+\[ \left(\sum_{i=1}^n z_i v_i\right)^2 \le (\mathbf{1}^T z)\left(\sum_{i=1}^n z_i v_i^2\right) \]
+Thus:
+\[ v^T \nabla^2 f(x) v \ge 0 \quad \forall v \]
+which proves that $f(x)$ is convex.
+
+\paragraph{Convexity of the Delay Constraint}
+The total delay can be written as:
+\[ D(x,y) = \sum_k c_k e^{a_k^T z} \]
+Taking logarithms:
+\[ \log D(x,y) = \log \left( \sum_k e^{a_k^T z + \log c_k} \right) \]
+which is a log-sum-exp function and therefore convex. Hence, the constraint:
+\[ D(x,y) \le T_{clk} \]
+is equivalent to the convex constraint:
+\[ \log D(x,y) \le \log T_{clk} \]
+
+\paragraph{Final Convex Optimization Problem}
+The optimization problem becomes:
+\[ \min_{x,y} \quad & \log \left(
+C_{p0} e^{x_1} + \sum_{i=2}^{N} (C_{g0}+C_{p0}) e^{x_i}
++ c \sum_{i=1}^{N} e^{y_i} \right) \]
+\[ \text{s.t.} \quad &
+\log \left( \sum_{i=1}^{N-1} d_i(x,y) + d_N(x,y) \right)
+\le \log T_{clk} \] 
+\[ \log W_{min} \le x_i \le \log W_{max}, \quad \forall i \]
+\[ \log \epsilon \le y_i \le \log l_{max}, \quad \forall i \]
+
+\paragraph{Strong Duality and Slater's Condition}
+The problem is convex since:
+\begin{itemize}
+    \item The objective is a log-sum-exp function, hence convex.
+    \item The delay constraint is convex.
+    \item The bound constraints are affine.
+\end{itemize}
+
+Let the feasible set be:
+\[
+\mathcal{D} =
+\left\{
+(x,y) \mid
+\log W_{min} \le x_i \le \log W_{max},\;
+\log \epsilon \le y_i \le \log l_{max}
+\right\}
+\]
+
+The relative interior of $\mathcal{D}$ is:
+\[
+\mathrm{relint}(\mathcal{D}) =
+\left\{
+(x,y) \mid
+\log W_{min} < x_i < \log W_{max},\;
+\log \epsilon < y_i < \log l_{max}
+\right\}
+\]
+
+To verify Slater’s condition, we must show that there exists
+$(x^\ast, y^\ast) \in \mathrm{relint}(\mathcal{D})$ such that:
+\[
+\log \left( \sum_{i=1}^{N-1} d_i(x^\ast,y^\ast) + d_N(x^\ast,y^\ast) \right)
+< \log T_{clk}
+\]
+
+Such a point exists by choosing:
+\begin{itemize}
+    \item $y_i^\ast$ sufficiently small (close to $\log \epsilon$), which reduces all terms involving $e^{y_i}$,
+    \item $x_i^\ast$ strictly within bounds and arranged to balance exponential terms.
+\end{itemize}
+
+Since all delay terms are positive and continuous, and can be made sufficiently small relative to $T_{clk}$, a strictly feasible point exists.
+
+Therefore, Slater’s condition holds:
+\[ \exists (x^\ast, y^\ast) \in \mathrm{relint}(\mathcal{D}) \] 
+such that \[  f_i(x^\ast,y^\ast) < 0 \]
+
+\paragraph{Conclusion}
+Since the problem is convex and Slater’s condition holds, strong duality follows:
+\[
+p^\ast - d^\ast = 0
+\]
+Thus, the duality gap is zero, and the Karush-Kuhn-Tucker (KKT) conditions are necessary and sufficient for optimality.
+
 
 \subsection{Dual Formulation}
 
