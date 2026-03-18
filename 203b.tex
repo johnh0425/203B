@@ -1,5 +1,6 @@
 \documentclass{article}
 \usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath,amssymb}
 
 \title{Power-Optimal Inverter Chain Design Under Elmore Delay Constraints}
 \author{Suprith Krishnakumar, John Fang, John Hsu, Yuheng Li}
@@ -11,39 +12,39 @@
 
 \section{Introduction}
 \subsection{Motivation}
-	Modern VLSI digital circuits demand increasingly stringent performance 
-	and energy efficiency requirements, particularly as transistor scaling continues 
-	to push designs toward higher density and faster clock speeds. A fundamental 
-	component in high-speed digital design is the use of inverter chains (buffer chains) 
-	to drive large capacitive loads, where improper sizing or staging can lead to excessive 
-	delay or unnecessary power consumption. While classical design heuristics such as fixed 
-	stage effort or logical effort methods provide useful guidelines, they do not always yield 
-	globally optimal solutions under complex constraints involving wire parasitics, transistor 
-	sizing limits, and timing requirements. The goal of this work is to develop a principled 
-	optimization framework for inverter chain design that minimizes dynamic power consumption 
-	subject to an Elmore delay constraint. We approach this problem through the lens of convex 
-	optimization by reformulating the inherently non-convex delay expressions into a geometric 
-	programming (GP) framework via logarithmic transformation. This enables efficient computation 
-	of globally optimal inverter sizes and interconnect lengths while accounting for physical 
-	constraints. Through this formulation, we aim to bridge classical circuit design intuition 
-	with modern optimization techniques and provide a scalable method for a energy-efficient 
-	buffer chain design.
+Modern VLSI digital circuits demand increasingly stringent performance
+and energy efficiency requirements, particularly as transistor scaling continues
+to push designs toward higher density and faster clock speeds. A fundamental
+component in high-speed digital design is the use of inverter chains (buffer chains)
+to drive large capacitive loads, where improper sizing or staging can lead to excessive
+delay or unnecessary power consumption. While classical design heuristics such as fixed
+stage effort or logical effort methods provide useful guidelines, they do not always yield
+globally optimal solutions under complex constraints involving wire parasitics, transistor
+sizing limits, and timing requirements. The goal of this work is to develop a principled
+optimization framework for inverter chain design that minimizes dynamic power consumption
+subject to an Elmore delay constraint. We approach this problem through the lens of convex
+optimization by reformulating the inherently non-convex delay expressions into a geometric
+programming (GP) framework via logarithmic transformation. This enables efficient computation
+of globally optimal inverter sizes and interconnect lengths while accounting for physical
+constraints. Through this formulation, we aim to bridge classical circuit design intuition
+with modern optimization techniques and provide a scalable method for a energy-efficient
+buffer chain design.
 \subsection{Previous Works}
 
 \subsection{Intended Contributions}
 \begin{enumerate}
-	\item Optimization-Based Formulation: We formulate the inverter chain design problem as a 
-	power minimization problem with Elmore delay, sizing, and interconnect constraints.
-	\item Geometric Programming Reformulation: We show that the non-convex delay constraint can 
-	be expressed as a posynomial and transformed into a convex constraint via logarithmic variable 
-	substitution.
-	\item Convexity Verification: We provide a formal justification that the transformed delay 
-	constraint is convex by leveraging the log-sum-exp structure and verifying all terms satisfy 
-	geometric programming requirements.
-	\item Solver Implementation: We implement the resulting formulation in a convex optimization 
-	framework (e.g., CVXPY) to compute optimal inverter sizing and interconnect parameters.
-	\item Design Insight: We analyze the trade-offs between delay, sizing, and power, and compare 
-	the optimized solutions to classical inverter chain design heuristics.
+	\item Optimization-Based Formulation: We formulate the inverter chain design problem as a
+	      power minimization problem with Elmore delay, sizing, and interconnect constraints.
+	\item Geometric Programming Reformulation: We show that the non-convex delay constraint can
+	      be expressed as a posynomial and transformed into a convex constraint via logarithmic variable
+	      substitution.
+	\item Convexity Verification: We provide a formal justification that the transformed delay
+	      constraint is convex by leveraging the log-sum-exp structure and verifying all terms satisfy
+	      geometric programming requirements.
+	\item Solver Implementation: We implement the resulting formulation in a convex optimization
+	      framework (e.g., CVXPY) to compute optimal inverter sizing and interconnect parameters.
+	\item Design Insight: We analyze the trade-offs between delay, sizing, and power, and compare
+	      the optimized solutions to classical inverter chain design heuristics.
 \end{enumerate}
 \subsection{Organization of the Paper}
 
@@ -51,17 +52,17 @@
 \section{Statement of the Problem}
 \subsection{Primal Formulation}
 \subsubsection{Physical Interpretation of the Inverter Chain}
-We consider a chain of $N$ CMOS inverters used to drive a fixed load capacitance $C_L$. 
-Such inverter chains, commonly referred to as buffer chains, are fundamental building 
-blocks in high-speed digital circuits, where they are used to drive large capacitive 
+We consider a chain of $N$ CMOS inverters used to drive a fixed load capacitance $C_L$.
+Such inverter chains, commonly referred to as buffer chains, are fundamental building
+blocks in high-speed digital circuits, where they are used to drive large capacitive
 loads while meeting strict timing constraints.
 
 Each stage in the inverter chain is characterized by two primary design variables:
 \begin{itemize}
-    \item $W_i > 0$: the effective transistor width (or sizing factor) of inverter $i$
-    \item $l_i > 0$: the interconnect length between inverter $i$ and inverter $i+1$
+	\item $W_i > 0$: the effective transistor width (or sizing factor) of inverter $i$
+	\item $l_i > 0$: the interconnect length between inverter $i$ and inverter $i+1$
 \end{itemize}
-The objective is to determine the optimal values of $\{W_i\}_{i=1}^N$ and $\{l_i\}_{i=1}^N$ 
+The objective is to determine the optimal values of $\{W_i\}_{i=1}^N$ and $\{l_i\}_{i=1}^N$
 that minimize dynamic power consumption while satisfying a delay constraint.
 Each inverter contributes capacitance from two sources:
 \paragraph{Gate (Input) Capacitance}
@@ -78,33 +79,33 @@ These capacitances contribute to both dynamic power consumption and delay.
 The wires connecting inverter stages introduce additional parasitics:
 \paragraph{Interconnect Modeling}
 \begin{itemize}
-    \item Resistance: \[ R_{wire,i} = r\,l_i \]
-    \item Capacitance: \[ C_{wire,i} = c\,l_i \]
+	\item Resistance: \[ R_{wire,i} = r\,l_i \]
+	\item Capacitance: \[ C_{wire,i} = c\,l_i \]
 \end{itemize}
-where $r$ and $c$ denote per-unit-length resistance and capacitance, respectively. 
-These parameters capture the physical effects of interconnect scaling and play a 
+where $r$ and $c$ denote per-unit-length resistance and capacitance, respectively.
+These parameters capture the physical effects of interconnect scaling and play a
 critical role in delay modeling.
 
 \paragraph{Inverter Resistance}
-The effective output resistance of inverter $i$ is inversely proportional 
-to its size: \[ R_i = \frac{R_0}{W_i} \] where $R_0$ is the resistance of a unit 
-inverter. Increasing the transistor width reduces resistance, improving delay at the 
+The effective output resistance of inverter $i$ is inversely proportional
+to its size: \[ R_i = \frac{R_0}{W_i} \] where $R_0$ is the resistance of a unit
+inverter. Increasing the transistor width reduces resistance, improving delay at the
 expense of increased capacitance.
 
 \paragraph{Dynamic Power Objective}
 The dynamic power consumption of a digital circuit is given by:
 \[ P_{dyn} = \alpha f V_{DD}^2 C_{tot} \]
-where $\alpha$ is the switching activity factor, $f$ is the clock frequency, and $V_{DD}$ is the supply voltage. 
+where $\alpha$ is the switching activity factor, $f$ is the clock frequency, and $V_{DD}$ is the supply voltage.
 These quantities are treated as constants in our formulation.
 
 Thus, minimizing dynamic power reduces to minimizing the total switched capacitance $C_{tot}$.
 
 The total capacitance in the inverter chain consists of:
 \begin{itemize}
-    \item Parasitic capacitance of each inverter
-    \item Gate capacitance of downstream inverters
-    \item Interconnect capacitance
-    \item Final load capacitance $C_L$
+	\item Parasitic capacitance of each inverter
+	\item Gate capacitance of downstream inverters
+	\item Interconnect capacitance
+	\item Final load capacitance $C_L$
 \end{itemize}
 
 This yields:
@@ -113,18 +114,18 @@ Since $C_L$ is constant, it does not affect the optimization and may be omitted 
 
 \paragraph{Elmore Delay Constraint}
 
-To ensure correct circuit operation, the total propagation delay must not exceed a specified clock period $T_{clk}$. 
+To ensure correct circuit operation, the total propagation delay must not exceed a specified clock period $T_{clk}$.
 We model delay using the Elmore delay approximation, which expresses delay as a weighted sum of downstream capacitances.
-The delay contribution of each stage includes interactions between inverter resistance and downstream capacitances, 
+The delay contribution of each stage includes interactions between inverter resistance and downstream capacitances,
 as well as interconnect effects.
 
 For stages $i = 1, \dots, N-1$, the delay contribution is:
 \[ d_i = \; R_0 C_{g0}\frac{W_{i+1}}{W_i} + R_0 C_{p0} + R_0 c\frac{l_i}{W_i} \\
-+ r C_{g0} l_i W_{i+1} + r C_{p0} l_i W_i + r c l_i^2 \]
+	+ r C_{g0} l_i W_{i+1} + r C_{p0} l_i W_i + r c l_i^2 \]
 
 The final stage differs since it drives the external load $C_L$:
 \[ d_N = \; R_0 C_L\frac{1}{W_N} + R_0 C_{p0} + R_0 c\frac{l_N}{W_N} \\
-+ r C_L l_N + r C_{p0} l_N W_N + r c l_N^2 \]
+	+ r C_L l_N + r C_{p0} l_N W_N + r c l_N^2 \]
 The total delay constraint is therefore: \[ \sum_{i=1}^{N-1} d_i + d_N \le T_{clk} \]
 
 \paragraph{Design Constraints}
@@ -147,9 +148,9 @@ This transformation is bijective over the positive orthant, ensuring no loss of 
 \paragraph{Transformation of Nonlinear Terms}
 Under this transformation, multiplicative and ratio terms become exponentials of affine expressions:
 \[
-\frac{W_{i+1}}{W_i} = e^{x_{i+1}-x_i}, \quad
-W_i l_i = e^{x_i+y_i}, \quad
-l_i^2 = e^{2y_i}
+	\frac{W_{i+1}}{W_i} = e^{x_{i+1}-x_i}, \quad
+	W_i l_i = e^{x_i+y_i}, \quad
+	l_i^2 = e^{2y_i}
 \]
 Thus, each term in the delay expressions can be written in the form:
 \[ c_k e^{a_k^T z}, \quad \text{where } z = [x_1, \dots, x_N, y_1, \dots, y_N]^T \]
@@ -161,12 +162,12 @@ Let $z_k = e^{x_k}$ and $z = [z_1, \dots, z_n]^T$. Then:
 \[ \nabla^2 f(x) = \frac{1}{\mathbf{1}^T z} \mathrm{diag}(z) - \frac{1}{(\mathbf{1}^T z)^2} zz^T \]
 For any $v \in \mathbb{R}^n$:
 \[
-v^T \nabla^2 f(x) v
-= \frac{1}{(\mathbf{1}^T z)^2}
-\left[
-(\mathbf{1}^T z)\left(\sum_{i=1}^n z_i v_i^2\right)
-- \left(\sum_{i=1}^n z_i v_i\right)^2
-\right]
+	v^T \nabla^2 f(x) v
+	= \frac{1}{(\mathbf{1}^T z)^2}
+	\left[
+		(\mathbf{1}^T z)\left(\sum_{i=1}^n z_i v_i^2\right)
+		- \left(\sum_{i=1}^n z_i v_i\right)^2
+		\right]
 \]
 By the Cauchy–Schwarz inequality:
 \[ \left(\sum_{i=1}^n z_i v_i\right)^2 \le (\mathbf{1}^T z)\left(\sum_{i=1}^n z_i v_i^2\right) \]
@@ -186,74 +187,304 @@ is equivalent to the convex constraint:
 
 \paragraph{Final Convex Optimization Problem}
 The optimization problem becomes:
-\[ \min_{x,y} \quad & \log \left(
-C_{p0} e^{x_1} + \sum_{i=2}^{N} (C_{g0}+C_{p0}) e^{x_i}
-+ c \sum_{i=1}^{N} e^{y_i} \right) \]
-\[ \text{s.t.} \quad &
-\log \left( \sum_{i=1}^{N-1} d_i(x,y) + d_N(x,y) \right)
-\le \log T_{clk} \] 
+\begin{align}
+	\min_{x,y} \quad & \log \left(
+	C_{p0} e^{x_1} + \sum_{i=2}^{N} (C_{g0}+C_{p0}) e^{x_i}
+	+ c \sum_{i=1}^{N} e^{y_i} \right)
+\end{align}
+\begin{align}
+	\text{s.t.} \quad &
+	\log \left( \sum_{i=1}^{N-1} d_i(x,y) + d_N(x,y) \right)
+	\le \log T_{clk}
+\end{align}
 \[ \log W_{min} \le x_i \le \log W_{max}, \quad \forall i \]
 \[ \log \epsilon \le y_i \le \log l_{max}, \quad \forall i \]
 
 \paragraph{Strong Duality and Slater's Condition}
 The problem is convex since:
 \begin{itemize}
-    \item The objective is a log-sum-exp function, hence convex.
-    \item The delay constraint is convex.
-    \item The bound constraints are affine.
+	\item The objective is a log-sum-exp function, hence convex.
+	\item The delay constraint is convex.
+	\item The bound constraints are affine.
 \end{itemize}
 
 Let the feasible set be:
 \[
-\mathcal{D} =
-\left\{
-(x,y) \mid
-\log W_{min} \le x_i \le \log W_{max},\;
-\log \epsilon \le y_i \le \log l_{max}
-\right\}
+	\mathcal{D} =
+	\left\{
+	(x,y) \mid
+	\log W_{min} \le x_i \le \log W_{max},\;
+	\log \epsilon \le y_i \le \log l_{max}
+	\right\}
 \]
 
 The relative interior of $\mathcal{D}$ is:
 \[
-\mathrm{relint}(\mathcal{D}) =
-\left\{
-(x,y) \mid
-\log W_{min} < x_i < \log W_{max},\;
-\log \epsilon < y_i < \log l_{max}
-\right\}
+	\mathrm{relint}(\mathcal{D}) =
+	\left\{
+	(x,y) \mid
+	\log W_{min} < x_i < \log W_{max},\;
+	\log \epsilon < y_i < \log l_{max}
+	\right\}
 \]
 
 To verify Slater’s condition, we must show that there exists
 $(x^\ast, y^\ast) \in \mathrm{relint}(\mathcal{D})$ such that:
 \[
-\log \left( \sum_{i=1}^{N-1} d_i(x^\ast,y^\ast) + d_N(x^\ast,y^\ast) \right)
-< \log T_{clk}
+	\log \left( \sum_{i=1}^{N-1} d_i(x^\ast,y^\ast) + d_N(x^\ast,y^\ast) \right)
+	< \log T_{clk}
 \]
 
 Such a point exists by choosing:
 \begin{itemize}
-    \item $y_i^\ast$ sufficiently small (close to $\log \epsilon$), which reduces all terms involving $e^{y_i}$,
-    \item $x_i^\ast$ strictly within bounds and arranged to balance exponential terms.
+	\item $y_i^\ast$ sufficiently small (close to $\log \epsilon$), which reduces all terms involving $e^{y_i}$,
+	\item $x_i^\ast$ strictly within bounds and arranged to balance exponential terms.
 \end{itemize}
 
 Since all delay terms are positive and continuous, and can be made sufficiently small relative to $T_{clk}$, a strictly feasible point exists.
 
 Therefore, Slater’s condition holds:
-\[ \exists (x^\ast, y^\ast) \in \mathrm{relint}(\mathcal{D}) \] 
+\[ \exists (x^\ast, y^\ast) \in \mathrm{relint}(\mathcal{D}) \]
 such that \[  f_i(x^\ast,y^\ast) < 0 \]
 
 \paragraph{Conclusion}
 Since the problem is convex and Slater’s condition holds, strong duality follows:
 \[
-p^\ast - d^\ast = 0
+	p^\ast - d^\ast = 0
 \]
 Thus, the duality gap is zero, and the Karush-Kuhn-Tucker (KKT) conditions are necessary and sufficient for optimality.
 
 
 \subsection{Dual Formulation}
-
+Define
+\begin{equation} \nonumber
+	S_0(x,y)
+	=
+	C_{p0}e^{x_1}
+	+\sum_{i=1}^N (C_{g0}+C_{p0})e^{x_i}
+	+c\sum_{i=1}^N e^{y_i},
+	\label{eq:S0}
+\end{equation}
+and
+\begin{equation} \nonumber
+	S_1(x,y)=\sum_{i=1}^{N-1} d_i(x,y)+d_N(x,y),
+	\label{eq:S1}
+\end{equation}
+where, for \(i=1,\dots,N-1\)\\
+The Lagrangian is
+\begin{equation}
+	\begin{aligned}
+		\mathcal{L}(x,y,\lambda,\alpha,\beta,\gamma,\delta)
+		={} &
+		\log S_0(x,y)
+		+\lambda\big(\log S_1(x,y)-\log T_{clk}\big) \\
+		    & +\sum_{i=1}^N \alpha_i(\log W_{\min}-x_i)
+		+\sum_{i=1}^N \beta_i(x_i-\log W_{\max})              \\
+		    & +\sum_{i=1}^N \gamma_i(\log \varepsilon-y_i)
+		+\sum_{i=1}^N \delta_i(y_i-\log l_{\max}).
+	\end{aligned}
+	\label{eq:Lagrangian}
+\end{equation}
+Using the conjugate of log-sum-exp
+\begin{equation} \nonumber
+	\log\!\left(\sum_j e^{s_j}\right)
+	=
+	\max_{\omega_j\ge 0,\ \sum_j \omega_j=1}
+	\left(
+	\sum_j \omega_j s_j-\sum_j \omega_j\log\omega_j
+	\right),
+	\label{eq:logsumexp1}
+\end{equation}
+introduce nonnegative weights \(\theta_0,\theta_i,\phi_i\) such that
+\begin{equation} \nonumber
+	\theta_0+\sum_{i=1}^N \theta_i+\sum_{i=1}^N \phi_i=1.
+	\label{eq:theta-phi-sum}
+\end{equation}
+Then
+\begin{equation}
+	\begin{aligned}
+		\log S_0(x,y)
+		=
+		\max_{\theta,\phi}\Bigg\{
+		 & \theta_0(\log C_{p0}+x_1)
+		+\sum_{i=1}^N \theta_i\big(\log(C_{g0}+C_{p0})+x_i\big) \\
+		 & +\sum_{i=1}^N \phi_i(\log c+y_i)
+		-\theta_0\log\theta_0
+		-\sum_{i=1}^N \theta_i\log\theta_i
+		-\sum_{i=1}^N \phi_i\log\phi_i
+		\Bigg\}.
+	\end{aligned}
+	\label{eq:S0-dual}
+\end{equation}
+Using the scaled conjugate log-sum-exp
+\begin{equation} \nonumber
+	\lambda\log\!\left(\sum_j e^{s_j}\right)
+	=
+	\max_{\mu_j\ge 0,\ \sum_j\mu_j=\lambda}
+	\left(
+	\sum_j \mu_j s_j
+	-\sum_j \mu_j\log\mu_j
+	+\lambda\log\lambda
+	\right),
+	\label{eq:logsumexp2}
+\end{equation}
+introduce nonnegative variables \(\eta_{i,k}\), \(k=1,\dots,6\), such that
+\begin{equation} \nonumber
+	\sum_{i=1}^N\sum_{k=1}^6 \eta_{i,k}=\lambda.
+	\label{eq:eta-sum}
+\end{equation}
+For \(i=1,\dots,N-1\), let
+\begin{equation} \nonumber
+	\eta_{i,1}\leftrightarrow R_0C_{g0}e^{x_{i+1}-x_i},\quad
+	\eta_{i,2}\leftrightarrow R_0C_{p0},\quad
+	\eta_{i,3}\leftrightarrow R_0ce^{y_i-x_i},
+\end{equation}
+\begin{equation} \nonumber
+	\eta_{i,4}\leftrightarrow rC_{g0}e^{y_i+x_{i+1}},\quad
+	\eta_{i,5}\leftrightarrow rC_{p0}e^{y_i+x_i},\quad
+	\eta_{i,6}\leftrightarrow rce^{2y_i},
+\end{equation}
+and for \(i=N\),
+\begin{equation} \nonumber
+	\eta_{N,1}\leftrightarrow R_0C_Le^{-x_N},\quad
+	\eta_{N,2}\leftrightarrow R_0C_{p0},\quad
+	\eta_{N,3}\leftrightarrow R_0ce^{y_N-x_N},
+\end{equation}
+\begin{equation} \nonumber
+	\eta_{N,4}\leftrightarrow rC_Le^{y_N},\quad
+	\eta_{N,5}\leftrightarrow rC_{p0}e^{y_N+x_N},\quad
+	\eta_{N,6}\leftrightarrow rce^{2y_N}.
+\end{equation}
+Then
+\begin{equation}
+	\begin{aligned}
+		\lambda \log S_1(x,y)
+		=
+		\max_{\eta \ge 0,\ \sum \eta = \lambda}
+		\Bigg\{
+		 & \sum_{i=1}^{N-1}\sum_{k=1}^{6}
+		\eta_{i,k}\bigl(\log a_{i,k}+m_{i,k}(x,y)\bigr)
+		\\&+\sum_{k=1}^{6}
+		\eta_{N,k}\bigl(\log a_{N,k}+m_{N,k}(x,y)\bigr)
+		-\sum_{i=1}^{N}\sum_{k=1}^{6}
+		\eta_{i,k}\log \eta_{i,k}
+		+\lambda \log \lambda
+		\Bigg\}.
+	\end{aligned}
+	\label{eq:S1-dual}
+\end{equation}
+Substituting \eqref{eq:S0-dual} and \eqref{eq:S1-dual} into \eqref{eq:Lagrangian}, the resulting expression is affine in \(x\) and \(y\). Finite infimum over \(x\) and \(y\) requires the coefficients of each \(x_i\) and \(y_i\) to vanish.
+From \(x_1\),
+\begin{equation}\nonumber
+	\theta_0+\theta_1-\eta_{1,1}-\eta_{1,3}+\eta_{1,5}-\alpha_1+\beta_1=0.
+	\label{eq:x1-balance}
+\end{equation}
+From \(x_i\), \(i=2,\dots,N-1\),
+\begin{equation}\nonumber
+	\theta_i+\eta_{i-1,1}+\eta_{i-1,4}-\eta_{i,1}-\eta_{i,3}+\eta_{i,5}-\alpha_i+\beta_i=0.
+	\label{eq:xi-balance}
+\end{equation}
+From \(x_N\),
+\begin{equation}\nonumber
+	\theta_N+\eta_{N-1,1}+\eta_{N-1,4}-\eta_{N,1}-\eta_{N,3}+\eta_{N,5}-\alpha_N+\beta_N=0.
+	\label{eq:xN-balance}
+\end{equation}
+From \(y_i\), \(i=1,\dots,N\),
+\begin{equation}\nonumber
+	\phi_i+\eta_{i,3}+\eta_{i,4}+\eta_{i,5}+2\eta_{i,6}-\gamma_i+\delta_i=0.
+	\label{eq:yi-balance}
+\end{equation}
+Then the dual function is
+\begin{equation}\nonumber
+	\begin{aligned}
+		g
+		=
+		 & \;
+		\theta_0\log\frac{C_{p0}}{\theta_0}
+		+\sum_{i=1}^N \theta_i\log\frac{C_{g0}+C_{p0}}{\theta_i}
+		+\sum_{i=1}^N \phi_i\log\frac{c}{\phi_i}
+		\\
+		 & +\sum_{i=1}^{N-1}\Bigg[
+			\eta_{i,1}\log\frac{R_0C_{g0}}{\eta_{i,1}}
+			+\eta_{i,2}\log\frac{R_0C_{p0}}{\eta_{i,2}}
+			+\eta_{i,3}\log\frac{R_0c}{\eta_{i,3}}
+			+\eta_{i,4}\log\frac{rC_{g0}}{\eta_{i,4}}
+			+\eta_{i,5}\log\frac{rC_{p0}}{\eta_{i,5}}
+			+\eta_{i,6}\log\frac{rc}{\eta_{i,6}}
+			\Bigg]
+		\\
+		 & +\eta_{N,1}\log\frac{R_0C_L}{\eta_{N,1}}
+		+\eta_{N,2}\log\frac{R_0C_{p0}}{\eta_{N,2}}
+		+\eta_{N,3}\log\frac{R_0c}{\eta_{N,3}}
+		+\eta_{N,4}\log\frac{rC_L}{\eta_{N,4}}
+		+\eta_{N,5}\log\frac{rC_{p0}}{\eta_{N,5}}
+		+\eta_{N,6}\log\frac{rc}{\eta_{N,6}}
+		\\
+		 & +\lambda\log\lambda-\lambda\log T_{clk}
+		+\sum_{i=1}^N \alpha_i\log W_{\min}
+		-\sum_{i=1}^N \beta_i\log W_{\max}
+		+\sum_{i=1}^N \gamma_i\log\varepsilon
+		-\sum_{i=1}^N \delta_i\log l_{\max}.
+	\end{aligned}
+	\label{eq:dual-function}
+\end{equation}
+Therefore, the dual problem is
+\begin{equation}\nonumber
+	\begin{aligned}
+		\max_{\theta,\phi,\eta,\lambda,\alpha,\beta,\gamma,\delta}\quad & 
+		g\\
+		\text{s.t.}\quad
+		    & \theta_0\ge 0,\qquad \theta_i\ge 0,\qquad \phi_i\ge 0,\qquad i=1,\dots,N,\\
+		    & \eta_{i,k}\ge 0,\qquad i=1,\dots,N,\quad k=1,\dots,6,\\
+		    & \alpha_i,\beta_i,\gamma_i,\delta_i\ge 0,\qquad i=1,\dots,N,\\
+		    & \theta_0+\sum_{i=1}^N \theta_i+\sum_{i=1}^N \phi_i=1,\\
+		    & \sum_{i=1}^N\sum_{k=1}^6 \eta_{i,k}=\lambda,\\
+		    & \theta_0+\theta_1-\eta_{1,1}-\eta_{1,3}+\eta_{1,5}-\alpha_1+\beta_1=0,\\
+		    & \theta_i+\eta_{i-1,1}+\eta_{i-1,4}-\eta_{i,1}-\eta_{i,3}+\eta_{i,5}-\alpha_i+\beta_i=0,\quad i=2,\dots,N-1,\\
+		    & \theta_N+\eta_{N-1,1}+\eta_{N-1,4}-\eta_{N,1}-\eta_{N,3}+\eta_{N,5}-\alpha_N+\beta_N=0,\\
+		    & \phi_i+\eta_{i,3}+\eta_{i,4}+\eta_{i,5}+2\eta_{i,6}-\gamma_i+\delta_i=0,\quad i=1,\dots,N.
+	\end{aligned}
+	\label{eq:dual-problem}
+\end{equation}
 \subsection{KKT Conditions}
-
+\begin{itemize}
+	\item Primal feasibility:
+		\begin{equation}\nonumber
+			\begin{aligned}
+				&\log S_1(x,y) \leq \log T_{clk}\\
+				&\log W_{\min}\leq x_i \leq \log W_{\max},\forall i\\
+				&\log \epsilon \leq y_i \leq \log l_{\max},\forall i
+			\end{aligned}
+		\end{equation}
+	\item Dual feasibility:
+		\[
+		\lambda \geq 0, \quad \alpha_i \geq 0, \quad \beta_i \geq 0, \quad \gamma_i \geq 0, \quad \delta_i \geq 0, \quad \forall i
+		\]
+	\item Complementary slackness:
+		\begin{equation}\nonumber
+			\begin{aligned}
+				&\lambda(\log S_1(x,y) - \log T_{clk}) = 0\\
+				&\alpha_i(\log W_{\min} - x_i) = 0, \forall i\\
+				&\beta_i(x_i - \log W_{\max}) = 0, \forall i\\
+				&\gamma_i(\log \epsilon - y_i) = 0, \forall i\\
+				&\delta_i(y_i - \log l_{\max}) = 0, \forall i
+			\end{aligned}
+		\end{equation}
+	\item Stationarity:
+		\begin{equation}\nonumber
+			\begin{aligned}
+				\frac{\partial \mathcal{L}}{\partial x_i} &= \frac{\partial}{\partial x_i} \log S_0(x,y) + \lambda \frac{\partial}{\partial x_i} (\log S_1(x,y) - \log T_{clk}) - \alpha_i + \beta_i\\
+				&=\frac{C_{p0}e^{x_1}+(C_{g0}+C_{p0})e^{x_i}}{S_0(x,y)}\\
+				&+\frac{\lambda(R_0C_{g0}e^{x_i-x_{i-1}}+rC_{go}e^{y_{i-1}+x_i}-R_0C_{g0}e^{x_{i+1}-x_i}-R_0cE^{y_i-x_i}+rC_{p0}e^{y_i+x_i})}{S_1(x,y)}-\alpha_i+\beta_i=0
+			\end{aligned}
+		\end{equation}
+		\begin{equation}
+			\begin{aligned}\nonumber
+				\frac{\partial \mathcal{L}}{\partial y_i} &= \frac{\partial}{\partial y_i} \log S_0(x,y) + \lambda \frac{\partial}{\partial y_i} (\log S_1(x,y) - \log T_{clk}) - \gamma_i + \delta_i\\
+				&=\frac{ce^{y_i}}{S_0(x,y)}+\frac{\lambda(R_0ce^{y_i-x_i}+rC_{g0}e^{y_i+x_{i+1}}+rC_{p0}e^{y_i+x_i}+2rce^{2y_i})}{S_1(x,y)}-\gamma_i+\delta_i=0
+			\end{aligned}
+		\end{equation}
+\end{itemize}
 
 \section{Approaches}
 
