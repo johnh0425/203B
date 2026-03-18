@@ -540,7 +540,99 @@ Therefore, the dual problem is
 		\end{equation}
 \end{itemize}
 
-\section{Approaches}
+\section{Approach}
+
+\subsection{Simulation Strategy and Design Choices}
+
+Although the theoretical formulation developed in the previous sections treats both inverter widths $\{W_i\}$ and wire lengths $\{l_i\}$ as optimization variables, a direct implementation of this fully unconstrained problem leads to degenerate solutions in practice. In particular, since both capacitance and delay decrease with smaller wire lengths, the optimizer tends to drive $l_i$ to their minimum allowable values, resulting in physically uninformative solutions.
+
+To address this issue and obtain meaningful design insights, we adopt a two-stage experimental strategy:
+
+\begin{enumerate}
+    \item \textbf{Fixed-profile wire simulations:} We fix the wire lengths $\{l_i\}$ according to predefined profiles and optimize only the inverter widths $\{W_i\}$. This allows us to isolate the effect of wire distribution on optimal sizing while avoiding degeneracy.
+    
+    \item \textbf{Unrestricted optimization:} We subsequently solve the full problem where both $\{W_i\}$ and $\{l_i\}$ are variables. This experiment is used primarily to validate the theoretical formulation and to study primal-dual consistency.
+\end{enumerate}
+
+This separation enables both interpretability and theoretical validation within the same framework.
+
+\subsection{Parameter Selection and Operating Regime}
+
+To ensure that the optimization produces nontrivial and informative solutions, we carefully selected a parameter regime that avoids boundary-dominated behavior. In particular, we chose:
+
+\[ N = 6, \quad \sum_{i=1}^N l_i = 25, \quad T_{clk} = 90, \quad C_L = 15 \]
+
+This regime was empirically tuned to ensure that:
+\begin{itemize}
+    \item The delay constraint is active but not overly restrictive
+    \item The optimal widths are not trivially pinned at $W_{min}$
+    \item Wire effects meaningfully influence the solution
+\end{itemize}
+
+This allows us to observe the interaction between sizing, interconnect distribution, and timing constraints.
+
+\subsection{Wire Length Profiles}
+
+In the fixed-profile setting, we define several representative wire distributions to study how interconnect placement affects optimal design:
+
+\begin{itemize}
+    \item \textbf{Uniform profile:} Wire length is evenly distributed across all stages
+    \item \textbf{Front-loaded profile:} Larger wire segments appear near the input stages
+    \item \textbf{Back-loaded profile:} Larger wire segments appear near the output stages
+\end{itemize}
+
+These profiles are designed to reflect different physical layout scenarios and allow us to study how downstream loading influences optimal inverter sizing.
+
+\subsection{Optimization Methodology}
+
+The optimization problem is implemented using the geometric programming formulation derived earlier. Specifically:
+
+\begin{itemize}
+    \item Decision variables are transformed into the log-domain:
+    \[ x_i = \log W_i, \quad y_i = \log l_i \]
+    
+    \item The delay constraint is expressed as a log-sum-exp function, ensuring convexity
+    
+    \item The objective function remains a sum of exponentials, which is compatible with convex solvers
+\end{itemize}
+
+The resulting convex problem is solved using \textbf{CVXPY}, which provides a high-level interface for specifying and solving convex optimization problems. This allows us to efficiently compute globally optimal solutions for each experimental configuration.
+
+\subsection{Baseline Comparison}
+
+To evaluate the importance of modeling interconnect effects, we compare the full wire-aware model with a simplified baseline inspired by classical formulations (e.g., logical effort or gate-only models). In this baseline:
+
+\begin{itemize}
+    \item Wire resistance and capacitance terms are removed
+    \item Only gate and parasitic capacitances are considered
+\end{itemize}
+
+This comparison highlights the extent to which neglecting interconnect effects underestimates the cost of meeting timing constraints.
+
+\subsection{Unrestricted Formulation and Dual Validation}
+
+In addition to the fixed-profile experiments, we also solve the unrestricted formulation where both $\{W_i\}$ and $\{l_i\}$ are optimized simultaneously. While this formulation is less physically informative due to degeneracy, it serves two important purposes:
+
+\begin{itemize}
+    \item \textbf{Verification of theoretical results:} We compare the primal and dual objective values to confirm strong duality.
+    \item \textbf{Numerical consistency:} We evaluate the duality gap in the log-domain to ensure correctness of the convex reformulation.
+\end{itemize}
+
+This step provides additional confidence in the validity of the geometric programming approach.
+
+\subsection{Evaluation Metrics}
+
+Across all experiments, we evaluate:
+
+\begin{itemize}
+    \item \textbf{Optimal objective value:} Represents the minimized capacitance (and thus dynamic power)
+    \item \textbf{Timing ratio:} Ratio of achieved delay to $T_{clk}$, indicating constraint tightness
+    \item \textbf{Width allocation:} Stage-wise inverter sizing patterns
+    \item \textbf{Sensitivity to parameters:} Changes in objective under varying $T_{clk}$ and wire profiles
+\end{itemize}
+
+These metrics allow us to systematically analyze both quantitative performance and qualitative design behavior.
+
 
 \section{Results And Conclusion}
 
