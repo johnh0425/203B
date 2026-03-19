@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.1)  18 MAR 2026 17:27
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.1)  18 MAR 2026 20:18
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -478,36 +478,36 @@ Overfull \hbox (3.33401pt too wide) in paragraph at lines 583--584
 <simulation/plots/power_vs_Tclk.png, id=67, 570.33075pt x 353.52075pt>
 File: simulation/plots/power_vs_Tclk.png Graphic file (type png)
 <use simulation/plots/power_vs_Tclk.png>
-Package pdftex.def Info: simulation/plots/power_vs_Tclk.png  used on input line 673.
+Package pdftex.def Info: simulation/plots/power_vs_Tclk.png  used on input line 672.
 (pdftex.def)             Requested size: 269.09958pt x 166.80208pt.
  [15]
 <simulation/plots/width_allocation_profiles.png, id=71, 570.33075pt x 353.52075pt>
 File: simulation/plots/width_allocation_profiles.png Graphic file (type png)
 <use simulation/plots/width_allocation_profiles.png>
-Package pdftex.def Info: simulation/plots/width_allocation_profiles.png  used on input line 682.
+Package pdftex.def Info: simulation/plots/width_allocation_profiles.png  used on input line 681.
 (pdftex.def)             Requested size: 269.09958pt x 166.80208pt.
  [16 <./simulation/plots/power_vs_Tclk.png> <./simulation/plots/width_allocation_profiles.png>]
 <simulation/plots/full_vs_baseline.png, id=77, 931.68076pt x 353.52075pt>
 File: simulation/plots/full_vs_baseline.png Graphic file (type png)
 <use simulation/plots/full_vs_baseline.png>
-Package pdftex.def Info: simulation/plots/full_vs_baseline.png  used on input line 695.
+Package pdftex.def Info: simulation/plots/full_vs_baseline.png  used on input line 694.
 (pdftex.def)             Requested size: 310.4979pt x 117.81657pt.
-<simulation/plots/free_length_profiles.png, id=78, 860.013pt x 317.38576pt>
+<simulation/plots/free_length_profiles.png, id=78, 859.41075pt x 317.38576pt>
 File: simulation/plots/free_length_profiles.png Graphic file (type png)
 <use simulation/plots/free_length_profiles.png>
-Package pdftex.def Info: simulation/plots/free_length_profiles.png  used on input line 704.
-(pdftex.def)             Requested size: 310.4979pt x 114.58809pt.
- [17 <./simulation/plots/full_vs_baseline.png>]
-Overfull \hbox (6.18239pt too wide) in paragraph at lines 717--717
+Package pdftex.def Info: simulation/plots/free_length_profiles.png  used on input line 703.
+(pdftex.def)             Requested size: 310.4979pt x 114.66559pt.
+ [17 <./simulation/plots/full_vs_baseline.png>] [18 <./simulation/plots/free_length_profiles.png>] [19]
+Overfull \hbox (6.18239pt too wide) in paragraph at lines 730--730
 \OT1/cmr/m/n/10 dig-i-tal de-sign''. In: \OT1/cmr/m/it/10 IEEE Jour-nal of Solid-State Cir-cuits \OT1/cmr/m/n/10 27.4 (1992), pp. 473{
  []
 
-[18 <./simulation/plots/free_length_profiles.png>]
-Overfull \hbox (0.89876pt too wide) in paragraph at lines 717--717
+
+Overfull \hbox (0.89876pt too wide) in paragraph at lines 730--730
 \OT1/cmr/m/n/10 pp. 783{787. \OT1/cmr/m/sc/10 isbn\OT1/cmr/m/n/10 : 1581138288. \OT1/cmr/m/sc/10 doi\OT1/cmr/m/n/10 : $\OT1/cmtt/m/n/10 10 . 1145 / 996566 . 996777$\OT1/cmr/m/n/10 . \OT1/cmr/m/sc/10 url\OT1/cmr/m/n/10 : $\OT1/cmtt/m/n/10 https :
  []
 
-[19] (./203b.aux)
+[20] (./203b.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
@@ -517,18 +517,18 @@ Package logreq Info: Writing requests to '203b.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 11003 strings out of 467525
- 204387 string characters out of 5418983
- 1045804 words of memory out of 5000000
- 39814 multiletter control sequences out of 15000+600000
+ 11009 strings out of 467525
+ 204622 string characters out of 5418983
+ 1046894 words of memory out of 5000000
+ 39820 multiletter control sequences out of 15000+600000
  637353 words of font info for 77 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 63i,11n,66p,1202b,1337s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 63i,11n,66p,1202b,1286s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on 203b.pdf (19 pages, 531678 bytes).
+Output written on 203b.pdf (20 pages, 543730 bytes).
 PDF statistics:
- 179 PDF objects out of 1000 (max. 8388607)
- 106 compressed objects within 2 object streams
+ 182 PDF objects out of 1000 (max. 8388607)
+ 108 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  26 words of extra memory for PDF output out of 10000 (max. 10000000)
 

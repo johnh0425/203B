@@ -183,9 +183,9 @@ INPUT ./simulation/plots/free_length_profiles.png
 INPUT ./simulation/plots/free_length_profiles.png
 INPUT ./simulation/plots/free_length_profiles.png
 INPUT ./simulation/plots/free_length_profiles.png
-INPUT /usr/local/texlive/2026/texmf-dist/fonts/tfm/public/cm/cmti10.tfm
 INPUT /usr/local/texlive/2026/texmf-dist/fonts/tfm/public/cm/cmcsc10.tfm
 INPUT /usr/local/texlive/2026/texmf-dist/fonts/tfm/public/cm/cmtt10.tfm
+INPUT /usr/local/texlive/2026/texmf-dist/fonts/tfm/public/cm/cmti10.tfm
 INPUT 203b.aux
 INPUT 203b.run.xml
 OUTPUT 203b.run.xml

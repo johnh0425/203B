@@ -19,6 +19,83 @@
 
 \refsection{0}
   \datalist[entry]{nty/global//global/global/global}
+    \entry{fed}{inproceedings}{}{}
+      \name{author}{3}{}{%
+        {{hash=13daa4ea97efec99782754775474e223}{%
+           family={Abou-Seido},
+           familyi={A\bibinithyphendelim S\bibinitperiod},
+           given={Arif},
+           giveni={A\bibinitperiod}}}%
+        {{hash=33e042d9186dd29b48260feb5a124d15}{%
+           family={Nowak},
+           familyi={N\bibinitperiod},
+           given={Brian},
+           giveni={B\bibinitperiod}}}%
+        {{hash=5a7eff753359cf2143fc9951bbd1db7e}{%
+           family={Chu},
+           familyi={C\bibinitperiod},
+           given={Chris},
+           giveni={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{729edb62b21d1598b8ec66f7ce582ff0}
+      \strng{fullhash}{729edb62b21d1598b8ec66f7ce582ff0}
+      \strng{fullhashraw}{729edb62b21d1598b8ec66f7ce582ff0}
+      \strng{bibnamehash}{729edb62b21d1598b8ec66f7ce582ff0}
+      \strng{authorbibnamehash}{729edb62b21d1598b8ec66f7ce582ff0}
+      \strng{authornamehash}{729edb62b21d1598b8ec66f7ce582ff0}
+      \strng{authorfullhash}{729edb62b21d1598b8ec66f7ce582ff0}
+      \strng{authorfullhashraw}{729edb62b21d1598b8ec66f7ce582ff0}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Transactions on Very Large Scale Integration (VLSI) Systems}
+      \field{month}{01}
+      \field{title}{Fitted Elmore Delay: A Simple and Accurate Interconnect Delay Model}
+      \field{volume}{12}
+      \field{year}{2002}
+      \field{pages}{422\bibrangedash 427}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1109/TVLSI.2004.830932
+      \endverb
+    \endentry
+    \entry{elmore}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=5a9f442b7de24f6bec10a451c98f5d70}{%
+           family={Avci},
+           familyi={A\bibinitperiod},
+           given={Mutlu},
+           giveni={M\bibinitperiod}}}%
+        {{hash=acd9f2a76d3b52ddbe0b994804cd36ef}{%
+           family={Yamacli},
+           familyi={Y\bibinitperiod},
+           given={Serhan},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{9baf7771aabed8daa414135aefbf1c2c}
+      \strng{fullhash}{9baf7771aabed8daa414135aefbf1c2c}
+      \strng{fullhashraw}{9baf7771aabed8daa414135aefbf1c2c}
+      \strng{bibnamehash}{9baf7771aabed8daa414135aefbf1c2c}
+      \strng{authorbibnamehash}{9baf7771aabed8daa414135aefbf1c2c}
+      \strng{authornamehash}{9baf7771aabed8daa414135aefbf1c2c}
+      \strng{authorfullhash}{9baf7771aabed8daa414135aefbf1c2c}
+      \strng{authorfullhashraw}{9baf7771aabed8daa414135aefbf1c2c}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Mathematical and Computer Modelling}
+      \field{month}{04}
+      \field{title}{An improved Elmore delay model for VLSI interconnects}
+      \field{volume}{51}
+      \field{year}{2010}
+      \field{pages}{908\bibrangedash 914}
+      \range{pages}{7}
+      \verb{doi}
+      \verb 10.1016/j.mcm.2009.08.024
+      \endverb
+    \endentry
     \entry{baseline}{inproceedings}{}{}
       \name{author}{2}{}{%
         {{hash=b23d8ae2bb4647caddc442c67baf7417}{%
