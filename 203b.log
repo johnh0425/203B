@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.2) (preloaded format=pdflatex 2026.3.12)  18 MAR 2026 16:14
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (MiKTeX 26.2) (preloaded format=pdflatex 2026.3.12)  18 MAR 2026 16:57
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -425,105 +425,105 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 LaTeX Font Info:    Trying to load font information for U+msb on input line 14.
  (C:\Users\johnh\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-
-LaTeX Warning: Citation 'cmos' on page 1 undefined on input line 38.
-
-
-LaTeX Warning: Citation 'cmos' on page 1 undefined on input line 40.
-
-
-LaTeX Warning: Citation 'alpha' on page 1 undefined on input line 43.
-
-
-LaTeX Warning: Citation 'gp' on page 1 undefined on input line 44.
-
-
-LaTeX Warning: Citation 'gp' on page 1 undefined on input line 47.
-
-[1
+) [1
 
 {C:/Users/johnh/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}]
 
-LaTeX Warning: Citation 'gp' on page 2 undefined on input line 53.
+LaTeX Warning: Citation 'cmos' on page 2 undefined on input line 54.
 
 
-LaTeX Warning: Citation 'dual_vdd' on page 2 undefined on input line 58.
+LaTeX Warning: Citation 'cmos' on page 2 undefined on input line 56.
 
 
-LaTeX Warning: Citation 'dual_vdd' on page 2 undefined on input line 60.
+LaTeX Warning: Citation 'alpha' on page 2 undefined on input line 59.
 
 
-LaTeX Warning: Citation 'convex' on page 2 undefined on input line 65.
+LaTeX Warning: Citation 'gp' on page 2 undefined on input line 60.
 
 
-LaTeX Warning: Citation 'gp' on page 2 undefined on input line 67.
+LaTeX Warning: Citation 'gp' on page 2 undefined on input line 63.
 
 
-LaTeX Warning: Citation 'gp' on page 2 undefined on input line 70.
-
-[2] [3] [4] [5] [6] [7] [8]
-Overfull \hbox (11.28651pt too wide) detected at line 374
-[][][]
- []
+LaTeX Warning: Citation 'gp' on page 2 undefined on input line 69.
 
 
-Overfull \hbox (69.72482pt too wide) detected at line 431
+LaTeX Warning: Citation 'dual_vdd' on page 2 undefined on input line 74.
+
+
+LaTeX Warning: Citation 'dual_vdd' on page 2 undefined on input line 76.
+
+
+LaTeX Warning: Citation 'convex' on page 2 undefined on input line 81.
+
+
+LaTeX Warning: Citation 'gp' on page 2 undefined on input line 83.
+
+[2]
+
+LaTeX Warning: Citation 'gp' on page 3 undefined on input line 86.
+
+[3] [4] [5] [6] [7] [8]
+Overfull \hbox (11.28651pt too wide) detected at line 390
 [][][]
  []
 
 [9]
-Overfull \hbox (102.38698pt too wide) detected at line 486
-[][][][]
+Overfull \hbox (69.72482pt too wide) detected at line 447
+[][][]
  []
 
 
-Overfull \hbox (30.12895pt too wide) detected at line 504
+Overfull \hbox (102.38698pt too wide) detected at line 502
 [][][][]
  []
 
 [10]
-Overfull \hbox (111.01842pt too wide) detected at line 536
-[][][]
- []
-
-
-Overfull \hbox (45.33067pt too wide) detected at line 542
-[][][]
+Overfull \hbox (30.12895pt too wide) detected at line 520
+[][][][]
  []
 
 [11]
-Overfull \hbox (3.33401pt too wide) in paragraph at lines 559--560
+Overfull \hbox (111.01842pt too wide) detected at line 552
+[][][]
+ []
+
+
+Overfull \hbox (45.33067pt too wide) detected at line 558
+[][][]
+ []
+
+
+Overfull \hbox (3.33401pt too wide) in paragraph at lines 575--576
 []\OT1/cmr/m/n/10 This sep-a-ra-tion en-ables both in-ter-pretabil-ity and the-o-ret-i-cal val-i-da-tion within
  []
 
-[12] [13]
-<simulation/plots/power_vs_Tclk.png, id=60, 570.33075pt x 353.52075pt>
+[12] [13] [14]
+<simulation/plots/power_vs_Tclk.png, id=63, 570.33075pt x 353.52075pt>
 File: simulation/plots/power_vs_Tclk.png Graphic file (type png)
 <use simulation/plots/power_vs_Tclk.png>
-Package pdftex.def Info: simulation/plots/power_vs_Tclk.png  used on input line 649.
+Package pdftex.def Info: simulation/plots/power_vs_Tclk.png  used on input line 665.
 (pdftex.def)             Requested size: 269.09958pt x 166.80208pt.
-<simulation/plots/width_allocation_profiles.png, id=62, 570.33075pt x 353.52075pt>
+<simulation/plots/width_allocation_profiles.png, id=65, 570.33075pt x 353.52075pt>
 File: simulation/plots/width_allocation_profiles.png Graphic file (type png)
 <use simulation/plots/width_allocation_profiles.png>
-Package pdftex.def Info: simulation/plots/width_allocation_profiles.png  used on input line 658.
+Package pdftex.def Info: simulation/plots/width_allocation_profiles.png  used on input line 674.
 (pdftex.def)             Requested size: 269.09958pt x 166.80208pt.
- [14]
-<simulation/plots/full_vs_baseline.png, id=66, 931.68076pt x 353.52075pt>
+ [15 <./simulation/plots/power_vs_Tclk.png>]
+<simulation/plots/full_vs_baseline.png, id=70, 931.68076pt x 353.52075pt>
 File: simulation/plots/full_vs_baseline.png Graphic file (type png)
 <use simulation/plots/full_vs_baseline.png>
-Package pdftex.def Info: simulation/plots/full_vs_baseline.png  used on input line 671.
+Package pdftex.def Info: simulation/plots/full_vs_baseline.png  used on input line 687.
 (pdftex.def)             Requested size: 310.4979pt x 117.81657pt.
-<simulation/plots/free_length_profiles.png, id=67, 860.013pt x 317.38576pt>
+<simulation/plots/free_length_profiles.png, id=71, 860.013pt x 317.38576pt>
 File: simulation/plots/free_length_profiles.png Graphic file (type png)
 <use simulation/plots/free_length_profiles.png>
-Package pdftex.def Info: simulation/plots/free_length_profiles.png  used on input line 680.
+Package pdftex.def Info: simulation/plots/free_length_profiles.png  used on input line 696.
 (pdftex.def)             Requested size: 310.4979pt x 114.58809pt.
 
 
-LaTeX Warning: Empty bibliography on input line 692.
+LaTeX Warning: Empty bibliography on input line 708.
 
-[15 <./simulation/plots/power_vs_Tclk.png>] [16 <./simulation/plots/width_allocation_profiles.png> <./simulation/plots/full_vs_baseline.png>] [17 <./simulation/plots/free_length_profiles.png>] (203b.aux)
+[16 <./simulation/plots/width_allocation_profiles.png>] [17 <./simulation/plots/full_vs_baseline.png> <./simulation/plots/free_length_profiles.png>] (203b.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
@@ -544,13 +544,13 @@ Package logreq Info: Writing requests to '203b.run.xml'.
 Here is how much of TeX's memory you used:
  10857 strings out of 467867
  201847 string characters out of 5418334
- 1044549 words of memory out of 5000000
+ 1044552 words of memory out of 5000000
  39651 multiletter control sequences out of 15000+600000
  636538 words of font info for 74 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  63i,11n,66p,820b,1152s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\johnh\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1000.pk><C:/Users/johnh/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/johnh/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/johnh/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/johnh/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cmextra/cmex7.pfb><C:/Users/johnh/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/johnh/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/johnh/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/johnh/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/johnh/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/johnh/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/johnh/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Users/johnh/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/johnh/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/johnh/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy5.pfb><C:/Users/johnh/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/johnh/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on 203b.pdf (17 pages, 456557 bytes).
+Output written on 203b.pdf (17 pages, 458400 bytes).
 PDF statistics:
  151 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
