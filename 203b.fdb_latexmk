@@ -1,13 +1,13 @@
 # Fdb version 4
-["biber 203b"] 1773879125.92683 "203b.bcf" "203b.bbl" "203b" 1773879132.77167 0
-  "203b.bcf" 1773879132.70302 109459 2b2124e7cfdc171afc2455024cfb78a2 "pdflatex"
+["biber 203b"] 1773879125.92683 "203b.bcf" "203b.bbl" "203b" 1773880077.35529 0
+  "203b.bcf" 1773880077.2832 109459 2b2124e7cfdc171afc2455024cfb78a2 "pdflatex"
   "references.bib" 1773878929.23249 6045 f2990a8e58c32369b195d0f9554d1de6 ""
   (generated)
   "203b.bbl"
   "203b.blg"
   (rewritten before read)
-["pdflatex"] 1773879131.65698 "/Users/suprithk/Documents/GitHub/203B/203b.tex" "203b.pdf" "203b" 1773879132.77194 0
-  "/Users/suprithk/Documents/GitHub/203B/203b.tex" 1773879130.33797 36054 d1822701c802e89d7166aefec6990276 ""
+["pdflatex"] 1773880076.25982 "/Users/suprithk/Documents/GitHub/203B/203b.tex" "203b.pdf" "203b" 1773880077.35555 0
+  "/Users/suprithk/Documents/GitHub/203B/203b.tex" 1773880074.84093 36065 6674a8410cf67523e9e71673912b7764 ""
   "/usr/local/texlive/2026/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2026/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2026/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1136768653 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
@@ -106,10 +106,10 @@
   "/usr/local/texlive/2026/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1773861529 5541377 04880c840ca220163a28f1a3af0ee662 ""
   "/usr/local/texlive/2026/texmf-var/web2c/pdftex/pdflatex.fmt" 1772409757 3636768 9f94d239f422c02416e379a36a852ffd ""
   "/usr/local/texlive/2026/texmf.cnf" 1772409725 577 648cd9f92f9c0eac486f4c71c85cfbbe ""
-  "203b.aux" 1773879132.70065 8399 3817410d130ca7559651eff3a8625881 "pdflatex"
+  "203b.aux" 1773880077.2817 8410 c1510feceefefea795affa9cef272f4a "pdflatex"
   "203b.bbl" 1773879127.36275 14949 2ab3b09bcdce87bb55e85dfd8e9ddecc "biber 203b"
-  "203b.run.xml" 1773879132.70363 2305 aab97d827d7dcfa4b435d8b86b6261e0 "pdflatex"
-  "203b.tex" 1773879130.33797 36054 d1822701c802e89d7166aefec6990276 ""
+  "203b.run.xml" 1773880077.28378 2305 aab97d827d7dcfa4b435d8b86b6261e0 "pdflatex"
+  "203b.tex" 1773880074.84093 36065 6674a8410cf67523e9e71673912b7764 ""
   "simulation/plots/cmos.png" 1773878983.54451 57382 2a655496bf750151c60c16f1fba45cd0 ""
   "simulation/plots/free_length_profiles.png" 1773862852.04508 64706 6fa5af54b32c93ce035ab2dc528ed648 ""
   "simulation/plots/full_vs_baseline.png" 1773862852.04576 78331 b3e3e97cf52a971bc346b9d04ec4cc9f ""
