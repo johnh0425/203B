@@ -603,12 +603,11 @@ In the fixed-profile setting, we define several representative wire distribution
 
 \begin{itemize}
     \item \textbf{Uniform profile:} Wire length is evenly distributed across all stages
-    \item \textbf{Front-loaded profile:} Larger wire segments appear near the input stages
     \item \textbf{Back-loaded profile:} Larger wire segments appear near the output stages
+    \item \textbf{Single-hotspot profile:} One stage is assigned a significantly larger wire segment than the others
 \end{itemize}
 
-These profiles are designed to reflect different physical layout scenarios and allow us to study how downstream loading influences optimal inverter sizing.
-
+These profiles are designed to reflect different physical layout scenarios and allow us to study how downstream loading and localized interconnect concentration influence optimal inverter sizing.
 \subsection{Optimization Methodology}
 
 The optimization problem is implemented using the geometric programming formulation derived earlier. Specifically:
@@ -671,7 +670,7 @@ We first selected a feasible and informative operating regime so that the optimi
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.78\linewidth]{simulation/plots/power_vs_Tclk.png}
-    \caption{Optimal objective versus timing budget for the fixed-profile wire-aware model. Tighter timing constraints increase the objective across all tested wire profiles, and the back-loaded profile is generally the most expensive.}
+    \caption{Optimal objective versus timing budget for the fixed-profile wire-aware model under three wire profiles.}
     \label{fig:power_tclk}
 \end{figure}
 
@@ -680,7 +679,7 @@ Figure~\ref{fig:power_tclk} shows the timing-budget sweep for the fixed-profile 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.78\linewidth]{simulation/plots/width_allocation_profiles.png}
-    \caption{Stage-by-stage optimal width allocation under three fixed wire profiles in the tuned operating regime. Concentrating more wire length near later stages changes the sizing pattern and tends to enlarge gates closer to the output side of the chain.}
+    \caption{Stage-by-stage optimal width allocation under three fixed wire profiles in the tuned operating regime.}
     \label{fig:width_profiles}
 \end{figure}
 
@@ -693,16 +692,16 @@ These values are clearly nonuniform, and the larger widths near the output side,
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.90\linewidth]{simulation/plots/full_vs_baseline.png}
-    \caption{Comparison between the full wire-aware model and a Boyd-style simplified baseline \cite{baseline}. The full model consistently yields a higher objective, indicating that neglecting wire effects underestimates the cost of meeting a timing target.}
+    \caption{Objective comparison between the full wire-aware model and a Boyd-style simplified baseline across timing budgets.}
     \label{fig:baseline_compare}
 \end{figure}
 
-To benchmark the wire-aware model, we compared it with a Boyd-style simplified baseline that removes wire resistance and wire-capacitance coupling terms \cite{baseline}. As shown in Figure~\ref{fig:baseline_compare}, the full model consistently produced a higher objective value than the simplified baseline under matched settings. This suggests that neglecting interconnect effects can underestimate the design cost required to satisfy a timing target.
+To benchmark the wire-aware model, we compared it with a Boyd-style simplified baseline that removes wire resistance and wire-capacitance coupling terms. As shown in Figure~\ref{fig:baseline_compare}, the simplified baseline yields a substantially lower objective value than the full model under matched settings. In our tested timing range, the baseline stays near approximately $1.024$, whereas the full wire-aware model ranges from about $1.303$ to $1.355$. This does not mean that the simplified formulation is better in a physical sense; rather, it is more optimistic because it neglects the interconnect delay terms that are explicitly modeled in the full GP. Therefore, the comparison suggests that approaches that do not include wire-delay effects can significantly underestimate the power-related cost required to satisfy a timing target.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.90\linewidth]{simulation/plots/free_length_profiles.png}
-    \caption{Optimal widths and wire lengths in the unrestricted formulation where both $W_i$ and $l_i$ are optimized. In the tested regime, both variables collapse to their lower bounds, revealing the degeneracy of the free-length formulation.}
+    \caption{Optimal widths and wire lengths in the unrestricted formulation where both $W_i$ and $l_i$ are optimized.}
     \label{fig:free_length}
 \end{figure}
 
