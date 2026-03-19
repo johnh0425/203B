@@ -1,0 +1,306 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global/global}
+    \entry{baseline}{inproceedings}{}{}
+      \name{author}{2}{}{%
+        {{hash=b23d8ae2bb4647caddc442c67baf7417}{%
+           family={Balfour},
+           familyi={B\bibinitperiod},
+           given={James},
+           giveni={J\bibinitperiod}}}%
+        {{hash=c4a8df92e1f8e22aa2062da8bcfd402d}{%
+           family={Dally},
+           familyi={D\bibinitperiod},
+           given={William\bibnamedelima J.},
+           giveni={W\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Munich, Germany}%
+      }
+      \list{publisher}{1}{%
+        {Association for Computing Machinery}%
+      }
+      \strng{namehash}{e7cc3a2572b717c87b943904c7f6c721}
+      \strng{fullhash}{e7cc3a2572b717c87b943904c7f6c721}
+      \strng{fullhashraw}{e7cc3a2572b717c87b943904c7f6c721}
+      \strng{bibnamehash}{e7cc3a2572b717c87b943904c7f6c721}
+      \strng{authorbibnamehash}{e7cc3a2572b717c87b943904c7f6c721}
+      \strng{authornamehash}{e7cc3a2572b717c87b943904c7f6c721}
+      \strng{authorfullhash}{e7cc3a2572b717c87b943904c7f6c721}
+      \strng{authorfullhashraw}{e7cc3a2572b717c87b943904c7f6c721}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{We develop detailed area and energy models for on-chip interconnection networks and describe tradeoffs in the design of efficient networks for tiled chip multiprocessors. Using these detailed models we investigate how aspects of the network architecture including topology, channel width, routing strategy, and buffer size affect performance and impact area and energy efficiency. We simulate the performance of a variety of on-chip networks designed for tiled chip multiprocessors implemented in an advanced VLSI process and compare area and energy efficiencies estimated from our models. We demonstrate that the introduction of a second parallel network can increase performance while improving efficiency, and evaluate different strategies for distributing traffic over the subnetworks. Drawing on insights from our analysis, we present a concentrated mesh topology with replicated subnetworks and express channels which provides a 24\% improvement in area efficiency and a 48\% improvement in energy efficiency over other networks evaluated in this study.}
+      \field{booktitle}{ACM International Conference on Supercomputing 25th Anniversary Volume}
+      \field{isbn}{9781450328401}
+      \field{title}{Design tradeoffs for tiled CMP on-chip networks}
+      \field{year}{2006}
+      \field{pages}{390\bibrangedash 401}
+      \range{pages}{12}
+      \verb{doi}
+      \verb 10.1145/2591635.2667187
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1145/2591635.2667187
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1145/2591635.2667187
+      \endverb
+    \endentry
+    \entry{gp}{article}{}{}
+      \name{author}{4}{}{%
+        {{hash=5cd9791a43b8812be4e3f9d64521947a}{%
+           family={Boyd},
+           familyi={B\bibinitperiod},
+           given={Stephen\bibnamedelima P.},
+           giveni={S\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+        {{hash=b7e6780aa1c70c79152bcfc0a0a10ebf}{%
+           family={Kim},
+           familyi={K\bibinitperiod},
+           given={Seung-Jean},
+           giveni={S\bibinithyphendelim J\bibinitperiod}}}%
+        {{hash=dc7efb246e696e2b1015dafdcfd1f8b6}{%
+           family={Patil},
+           familyi={P\bibinitperiod},
+           given={Dinesh\bibnamedelima D.},
+           giveni={D\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=a7ee405a93e16b75b63d66f16ec4816b}{%
+           family={Horowitz},
+           familyi={H\bibinitperiod},
+           given={Mark\bibnamedelima A.},
+           giveni={M\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Linthicum, MD, USA}%
+      }
+      \list{publisher}{1}{%
+        {INFORMS}%
+      }
+      \strng{namehash}{cca1e7a9778a4d3f9d4a6ec7fcaefa4f}
+      \strng{fullhash}{e8ffb7bffeb7e59125294e158dc05bd7}
+      \strng{fullhashraw}{e8ffb7bffeb7e59125294e158dc05bd7}
+      \strng{bibnamehash}{cca1e7a9778a4d3f9d4a6ec7fcaefa4f}
+      \strng{authorbibnamehash}{cca1e7a9778a4d3f9d4a6ec7fcaefa4f}
+      \strng{authornamehash}{cca1e7a9778a4d3f9d4a6ec7fcaefa4f}
+      \strng{authorfullhash}{e8ffb7bffeb7e59125294e158dc05bd7}
+      \strng{authorfullhashraw}{e8ffb7bffeb7e59125294e158dc05bd7}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{This paper concerns a method for digital circuit optimization based on formulating the problem as a geometric program (GP) or generalized geometric program (GGP), which can be transformed to a convex optimization problem and then very efficiently solved. We start with a basic gate scaling problem, with delay modeled as a simple resistor-capacitor (RC) time constant, and then add various layers of complexity and modeling accuracy, such as accounting for differing signal fall and rise times, and the effects of signal transition times. We then consider more complex formulations such as robust design over corners, multimode design, statistical design, and problems in which threshold and power supply voltage are also variables to be chosen. Finally, we look at the detailed design of gates and interconnect wires, again using a formulation that is compatible with GP or GGP.}
+      \field{issn}{0030-364X}
+      \field{journaltitle}{Oper. Res.}
+      \field{month}{11}
+      \field{number}{6}
+      \field{title}{Digital Circuit Optimization via Geometric Programming}
+      \field{volume}{53}
+      \field{year}{2005}
+      \field{pages}{899\bibrangedash 932}
+      \range{pages}{34}
+      \verb{doi}
+      \verb 10.1287/opre.1050.0254
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1287/opre.1050.0254
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1287/opre.1050.0254
+      \endverb
+      \keyw{digital circuit optimization,engineering: computer-aided design,programming: geometric}
+    \endentry
+    \entry{cmos}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=b3778fc339ace087aa43bca93cd765da}{%
+           family={Chandrakasan},
+           familyi={C\bibinitperiod},
+           given={A.P.},
+           giveni={A\bibinitperiod}}}%
+        {{hash=d51bc47cef7310b9377ff630e08fb0b5}{%
+           family={Sheng},
+           familyi={S\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod}}}%
+        {{hash=ee3145ac3afe5475637c6ed05921cf86}{%
+           family={Brodersen},
+           familyi={B\bibinitperiod},
+           given={R.W.},
+           giveni={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{df6a23fc2308cdbcf2a47fa4ab4dbbae}
+      \strng{fullhash}{df6a23fc2308cdbcf2a47fa4ab4dbbae}
+      \strng{fullhashraw}{df6a23fc2308cdbcf2a47fa4ab4dbbae}
+      \strng{bibnamehash}{df6a23fc2308cdbcf2a47fa4ab4dbbae}
+      \strng{authorbibnamehash}{df6a23fc2308cdbcf2a47fa4ab4dbbae}
+      \strng{authornamehash}{df6a23fc2308cdbcf2a47fa4ab4dbbae}
+      \strng{authorfullhash}{df6a23fc2308cdbcf2a47fa4ab4dbbae}
+      \strng{authorfullhashraw}{df6a23fc2308cdbcf2a47fa4ab4dbbae}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Journal of Solid-State Circuits}
+      \field{number}{4}
+      \field{title}{Low-power CMOS digital design}
+      \field{volume}{27}
+      \field{year}{1992}
+      \field{pages}{473\bibrangedash 484}
+      \range{pages}{12}
+      \verb{doi}
+      \verb 10.1109/4.126534
+      \endverb
+      \keyw{Portable computers;Energy consumption;Voltage;CMOS digital integrated circuits;Digital circuits;Throughput;Coupling circuits;CMOS logic circuits;Logic circuits;CMOS technology}
+    \endentry
+    \entry{convex}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=b681d0d7876497511029617df40ca864}{%
+           family={Luo},
+           familyi={L\bibinitperiod},
+           given={Zhi-Quan},
+           giveni={Z\bibinithyphendelim Q\bibinitperiod}}}%
+        {{hash=306f61b972c01e5452d64353ce1974d6}{%
+           family={Yu},
+           familyi={Y\bibinitperiod},
+           given={Wei},
+           giveni={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{6877b8bbae2f895555f295232b9b5cb3}
+      \strng{fullhash}{6877b8bbae2f895555f295232b9b5cb3}
+      \strng{fullhashraw}{6877b8bbae2f895555f295232b9b5cb3}
+      \strng{bibnamehash}{6877b8bbae2f895555f295232b9b5cb3}
+      \strng{authorbibnamehash}{6877b8bbae2f895555f295232b9b5cb3}
+      \strng{authornamehash}{6877b8bbae2f895555f295232b9b5cb3}
+      \strng{authorfullhash}{6877b8bbae2f895555f295232b9b5cb3}
+      \strng{authorfullhashraw}{6877b8bbae2f895555f295232b9b5cb3}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Journal on Selected Areas in Communications}
+      \field{number}{8}
+      \field{title}{An introduction to convex optimization for communications and signal processing}
+      \field{volume}{24}
+      \field{year}{2006}
+      \field{pages}{1426\bibrangedash 1438}
+      \range{pages}{13}
+      \verb{doi}
+      \verb 10.1109/JSAC.2006.879347
+      \endverb
+      \keyw{Signal processing;Optimization methods;Signal processing algorithms;Symmetric matrices;Linear programming;Algorithm design and analysis;Lagrangian functions;Robustness;Digital communication;Digital signal processing;Convex optimization;digital communications;duality;second-order cone programming (SOCP);semidefinite programming (SDP);signal processing}
+    \endentry
+    \entry{alpha}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=6d0c896591a4593ca75873dd419fdd0d}{%
+           family={Sakurai},
+           familyi={S\bibinitperiod},
+           given={T.},
+           giveni={T\bibinitperiod}}}%
+        {{hash=1f203a8f977daae21eb382edf0e57297}{%
+           family={Newton},
+           familyi={N\bibinitperiod},
+           given={A.R.},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{5bf7c7e64576cdde9530f18688c3006f}
+      \strng{fullhash}{5bf7c7e64576cdde9530f18688c3006f}
+      \strng{fullhashraw}{5bf7c7e64576cdde9530f18688c3006f}
+      \strng{bibnamehash}{5bf7c7e64576cdde9530f18688c3006f}
+      \strng{authorbibnamehash}{5bf7c7e64576cdde9530f18688c3006f}
+      \strng{authornamehash}{5bf7c7e64576cdde9530f18688c3006f}
+      \strng{authorfullhash}{5bf7c7e64576cdde9530f18688c3006f}
+      \strng{authorfullhashraw}{5bf7c7e64576cdde9530f18688c3006f}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Journal of Solid-State Circuits}
+      \field{number}{2}
+      \field{title}{Alpha-power law MOSFET model and its applications to CMOS inverter delay and other formulas}
+      \field{volume}{25}
+      \field{year}{1990}
+      \field{pages}{584\bibrangedash 594}
+      \range{pages}{11}
+      \verb{doi}
+      \verb 10.1109/4.52187
+      \endverb
+      \keyw{MOSFET circuits;Semiconductor device modeling;Inverters;Delay effects;Propagation delay;Predictive models;Circuit analysis;Closed-form solution;Voltage;Circuit simulation}
+    \endentry
+    \entry{dual_vdd}{inproceedings}{}{}
+      \name{author}{3}{}{%
+        {{hash=71060a8b6720a52ccf8aa74f2847c733}{%
+           family={Srivastava},
+           familyi={S\bibinitperiod},
+           given={Ashish},
+           giveni={A\bibinitperiod}}}%
+        {{hash=241f5ce07af73089fc180066c3300ad9}{%
+           family={Sylvester},
+           familyi={S\bibinitperiod},
+           given={Dennis},
+           giveni={D\bibinitperiod}}}%
+        {{hash=e9913454f77499850ecf4d5345674578}{%
+           family={Blaauw},
+           familyi={B\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {San Diego, CA, USA}%
+      }
+      \list{publisher}{1}{%
+        {Association for Computing Machinery}%
+      }
+      \strng{namehash}{c342e4d5b44bb60280aa202ce9e9477e}
+      \strng{fullhash}{c342e4d5b44bb60280aa202ce9e9477e}
+      \strng{fullhashraw}{c342e4d5b44bb60280aa202ce9e9477e}
+      \strng{bibnamehash}{c342e4d5b44bb60280aa202ce9e9477e}
+      \strng{authorbibnamehash}{c342e4d5b44bb60280aa202ce9e9477e}
+      \strng{authornamehash}{c342e4d5b44bb60280aa202ce9e9477e}
+      \strng{authorfullhash}{c342e4d5b44bb60280aa202ce9e9477e}
+      \strng{authorfullhashraw}{c342e4d5b44bb60280aa202ce9e9477e}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{We develop an approach to minimize total power in a dual-Vdd and dual-Vth design. The algorithm runs in two distinct phases. The first phase relies on upsizing to create slack and maximize low Vdd assignments in a backward topological manner. The second phase proceeds in a forward topological fashion and both sizes and re-assigns gates to high Vdd to enable significant static power savings through high Vth assignment. The proposed algorithm is implemented and tested on a set of combinational benchmark circuits. A comparison with traditional CVS and dual-Vth/sizing algorithms demonstrate the advantage of the algorithm over a range of activity factors, including an average power reduction of 30\% (50\%) at high (nominal) primary input activities.}
+      \field{booktitle}{Proceedings of the 41st Annual Design Automation Conference}
+      \field{isbn}{1581138288}
+      \field{series}{DAC '04}
+      \field{title}{Power minimization using simultaneous gate sizing, dual-Vdd and dual-Vth assignment}
+      \field{year}{2004}
+      \field{pages}{783\bibrangedash 787}
+      \range{pages}{5}
+      \verb{doi}
+      \verb 10.1145/996566.996777
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1145/996566.996777
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1145/996566.996777
+      \endverb
+      \keyw{power dissipation,optimization,multiple voltages}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

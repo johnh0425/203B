@@ -132,7 +132,7 @@ loads while meeting strict timing constraints.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\linewidth]{simulation/plots/image.png}
+    \includegraphics[width=0.75\linewidth]{simulation/plots/cmos.png}
     \caption{Caption here.}
     \label{fig:image}
 \end{figure}
@@ -626,7 +626,7 @@ The resulting convex problem is solved using \textbf{CVXPY}, which provides a hi
 
 \subsection{Baseline Comparison}
 
-To evaluate the importance of modeling interconnect effects, we compare the full wire-aware model with a simplified baseline inspired by classical formulations (e.g., logical effort or gate-only models). In this baseline:
+To evaluate the importance of modeling interconnect effects, we compare the full wire-aware model with a simplified baseline inspired by classical formulations (e.g., logical effort or gate-only models) \cite{baseline}. In this baseline:
 
 \begin{itemize}
     \item Wire resistance and capacitance terms are removed
@@ -693,11 +693,11 @@ These values are clearly nonuniform, and the larger widths near the output side,
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.90\linewidth]{simulation/plots/full_vs_baseline.png}
-    \caption{Comparison between the full wire-aware model and a Boyd-style simplified baseline. The full model consistently yields a higher objective, indicating that neglecting wire effects underestimates the cost of meeting a timing target.}
+    \caption{Comparison between the full wire-aware model and a Boyd-style simplified baseline \cite{baseline}. The full model consistently yields a higher objective, indicating that neglecting wire effects underestimates the cost of meeting a timing target.}
     \label{fig:baseline_compare}
 \end{figure}
 
-To benchmark the wire-aware model, we compared it with a Boyd-style simplified baseline that removes wire resistance and wire-capacitance coupling terms. As shown in Figure~\ref{fig:baseline_compare}, the full model consistently produced a higher objective value than the simplified baseline under matched settings. This suggests that neglecting interconnect effects can underestimate the design cost required to satisfy a timing target.
+To benchmark the wire-aware model, we compared it with a Boyd-style simplified baseline that removes wire resistance and wire-capacitance coupling terms \cite{baseline}. As shown in Figure~\ref{fig:baseline_compare}, the full model consistently produced a higher objective value than the simplified baseline under matched settings. This suggests that neglecting interconnect effects can underestimate the design cost required to satisfy a timing target.
 
 \begin{figure}[H]
     \centering
@@ -711,7 +711,7 @@ Finally, we returned to the unrestricted formulation in which both $W_i$ and $l_
 \subsection{Conclusion}
 
 
-\section{References}
+% \section{References}
 
 \printbibliography
 
